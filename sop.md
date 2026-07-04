@@ -99,3 +99,57 @@ Alternatively, you can supply parameters directly via the command line instead o
 
 
 * Distribute the completed report to the responsible AVD operations team for review and follow-up actions.
+
+
+Here is the formatted checklist ready to be copy-pasted directly into your GitHub repository's `README.md` or documentation file.
+
+### Recommended First-Run Checklist
+
+Follow these steps to safely initialize and test the script in a new environment.
+
+**1. Confirm Az modules are current**
+Ensure you have the latest Azure PowerShell modules installed.
+
+```powershell
+Update-Module Az -Force
+
+```
+
+**2. Authenticate**
+Connect to your Azure environment to establish a session.
+
+```powershell
+Connect-AzAccount
+
+```
+
+**3. Perform a Dry Run**
+Run the script with the `-DryRun` switch. This makes zero Azure calls and confirms that the script parses cleanly.
+
+```powershell
+.\AVD-EnvironmentHealth.Generic.ps1 `
+    -DryRun -OpenReport -ClientName "Test"
+
+```
+
+**4. Live Run (Non-Production)**
+Execute a live run against a non-production subscription first, if available, using your generated configuration file.
+
+```powershell
+.\AVD-EnvironmentHealth.Generic.ps1 `
+    -ConfigPath .\config.<client>-<env>.json `
+    -UseExistingConnection -OpenReport
+
+```
+
+**5. First Production Run**
+Execute your first production run and watch the console output live to ensure everything functions as expected.
+
+> **Important:** Do NOT schedule unattended execution until Step 4 has completed cleanly.
+
+```powershell
+.\AVD-EnvironmentHealth.Generic.ps1 `
+    -ConfigPath .\config.<client>-prod.json `
+    -UseExistingConnection -OpenReport
+
+```

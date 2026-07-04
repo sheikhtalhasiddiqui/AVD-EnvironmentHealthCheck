@@ -6,24 +6,19 @@ The AVD-EnvironmentHealth tool is a single, read-only PowerShell script designed
 
 ## Prerequisites
 
-* 
-**PowerShell:** Version 5.1 or 7.x.
+* **PowerShell:** Version 5.1 or 7.x.
 
 
-* 
-**Modules:** `Az.Accounts`, `Az.DesktopVirtualization`, `Az.Compute`, `Az.Monitor`, `Az.Resources`, `Az.Network`, `Az.Storage`, `Az.Security`, and `Az.NetAppFiles`. All of these modules are required regardless of the target storage backend.
+* **Modules:** `Az.Accounts`, `Az.DesktopVirtualization`, `Az.Compute`, `Az.Monitor`, `Az.Resources`, `Az.Network`, `Az.Storage`, `Az.Security`, and `Az.NetAppFiles`. All of these modules are required regardless of the target storage backend.
 
 
-* 
-**Permissions:** Reader role (minimum) on the AVD resource group and the profile storage resource group. No write permissions are required. Do not assign the Contributor role to run this tool.
+* **Permissions:** Reader role (minimum) on the AVD resource group and the profile storage resource group. No write permissions are required. Do not assign the Contributor role to run this tool.
 
 
-* 
-**Authentication:** An authenticated Az context via interactive sign-in, device code, service principal, or managed identity.
+* **Authentication:** An authenticated Az context via interactive sign-in, device code, service principal, or managed identity.
 
 
-* 
-**Network:** Outbound HTTPS (443) access from the execution host to Azure Resource Manager and Marketplace endpoints.
+* **Network:** Outbound HTTPS (443) access from the execution host to Azure Resource Manager and Marketplace endpoints.
 
 
 
@@ -46,8 +41,7 @@ The FSLogix profile storage backend varies by environment and must always be con
 5. Populate the corresponding account and resource group fields (e.g., `anfResourceGroupName`, `storageResourceGroupName`, `storageAccountName`) based on your backend choice.
 
 
-6. 
-**Security Warning:** Store any configuration files containing subscription or tenant IDs outside of source control.
+6. **Security Warning:** Store any configuration files containing subscription or tenant IDs outside of source control.
 
 
 
@@ -94,8 +88,7 @@ Alternatively, you can supply parameters directly via the command line instead o
 * Open the generated report and verify that the header correctly displays the Client, Environment, Resource Group, and Profile Storage backend.
 
 
-* 
-**Confidentiality:** Treat the generated report as Internal/Confidential, as it contains resource names, IDs, and infrastructure health data.
+* **Confidentiality:** Treat the generated report as Internal/Confidential, as it contains resource names, IDs, and infrastructure health data.
 
 
 * Distribute the completed report to the responsible AVD operations team for review and follow-up actions.

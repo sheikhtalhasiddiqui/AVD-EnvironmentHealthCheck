@@ -101,8 +101,6 @@ Alternatively, you can supply parameters directly via the command line instead o
 * Distribute the completed report to the responsible AVD operations team for review and follow-up actions.
 
 
-Here is the formatted checklist ready to be copy-pasted directly into your GitHub repository's `README.md` or documentation file.
-
 ### Recommended First-Run Checklist
 
 Follow these steps to safely initialize and test the script in a new environment.

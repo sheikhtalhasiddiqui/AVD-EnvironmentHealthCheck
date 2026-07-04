@@ -1,0 +1,54 @@
+{
+  "_comment": "AVD-EnvironmentHealth configuration template. Copy per client/environment — e.g. config.contoso-prod.json. Do NOT commit populated copies containing real subscriptionId/tenantId to a public repo.",
+  "_how_arrays_work": "All *Names fields accept a JSON array (preferred) or a single string. The script also accepts comma-separated values in the matching environment variable.",
+
+  "clientName": "<Client or Business Unit Name — shown in report header and output filename>",
+  "environmentName": "Production",
+  "_environmentName_options": "Development | Test | UAT | Staging | Production",
+
+  "subscriptionId": "<Azure Subscription GUID — leave blank to use the current Az context subscription>",
+  "tenantId": "<Azure AD Tenant GUID — leave blank to use the current Az context tenant>",
+
+  "_section_avd": "AVD HOST POOL RESOURCE GROUPS",
+  "resourceGroupNames": [
+    "<Resource Group 1 containing AVD host pools / session host VMs>",
+    "<Resource Group 2 — add or remove entries as needed>"
+  ],
+  "_resourceGroupNames_note": "Single-RG environments can supply one element. Legacy single-string key 'resourceGroupName' is also accepted for backward compatibility.",
+
+  "_section_storage": "PROFILE STORAGE",
+  "profileStorageType": "ANF",
+  "_profileStorageType_options": "ANF | AzureFiles | Both",
+
+  "_section_anf": "Azure NetApp Files (used when profileStorageType is ANF or Both)",
+  "anfResourceGroupNames": [
+    "<Resource Group containing ANF accounts — e.g. rg-anf-prod>",
+    "<Add more RGs if ANF accounts span multiple resource groups, or remove this entry>"
+  ],
+  "_anfResourceGroupNames_note": "Leave as empty array [] to scan subscription-wide for all ANF accounts.",
+
+  "_section_azfiles": "Azure Files / Storage Account (used when profileStorageType is AzureFiles or Both)",
+  "storageResourceGroupNames": [
+    "<Resource Group 1 containing FSLogix Azure Files storage accounts>",
+    "<Resource Group 2 — add or remove as needed>"
+  ],
+  "_storageResourceGroupNames_note": "Leave as empty array [] to scan the entire subscription. Takes precedence over storageAccountNames if both are set.",
+
+  "storageAccountNames": [
+    "<Specific Storage Account name — e.g. stavdprofiles01>",
+    "<Specific Storage Account name 2 — e.g. stavdprofiles02, or remove this entry>"
+  ],
+  "_storageAccountNames_note": "Optional. If provided, only these accounts are assessed (within the configured storageResourceGroupNames, or subscription-wide if that list is empty). Leave as empty array [] to assess ALL accounts in storageResourceGroupNames.",
+
+  "_section_thresholds": "THRESHOLDS AND DEFAULTS",
+  "quotaWarningPercent": 80,
+  "_quotaWarningPercent_note": "Volumes or shares at or above this usage % are flagged WARN. Default: 80.",
+
+  "defaultRegion": "eastus",
+  "_defaultRegion_note": "Fallback Azure region used only when a region cannot be derived from a live resource (e.g., Marketplace AMA version lookups when no session hosts exist yet).",
+
+  "_section_branding": "REPORT BRANDING (optional)",
+  "brandDisplayName": "<Short client/org name shown in report header — leave blank to omit>",
+  "brandColor": "#3B82F6",
+  "_brandColor_note": "Hex colour applied to the brand wordmark. Default: #3B82F6 (blue)."
+}
